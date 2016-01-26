@@ -7,7 +7,7 @@ hs.window.animationDuration = 0
 -- Hack to move window between spaces
 function moveWindowOneSpace(direction)
   local mouseOrigin = hs.mouse.getAbsolutePosition()
-  local win = hs.window.focusedWindow()
+  local win = hs.window.frontmostWindow()
   local clickPoint = win:zoomButtonRect()
 
   clickPoint.x = clickPoint.x + clickPoint.w + 3
@@ -41,7 +41,7 @@ local function cleanupWindowPos(_,_,_,id)
 end
 
 function getWindowState()
-  local win = hs.window.focusedWindow()
+  local win = hs.window.frontmostWindow()
   local screen = win:screen():frame()
   local f = win:frame()
 
@@ -69,7 +69,7 @@ function getWindowState()
 end
 
 function resizeWindow(desired)
-  local win = hs.window.focusedWindow()
+  local win = hs.window.frontmostWindow()
   local screen = win:screen():frame()
   local f = win:frame()
   local id = win:id()
@@ -112,7 +112,7 @@ function resizeWindow(desired)
 end
 
 function moveWindow(direction)
-  local win = hs.window.focusedWindow()
+  local win = hs.window.frontmostWindow()
   local id = win:id()
 
   position = getWindowState()
