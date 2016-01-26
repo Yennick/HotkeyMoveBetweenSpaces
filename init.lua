@@ -115,7 +115,13 @@ function resizeWindow(desired)
 end
 
 function moveWindow(direction)
-  local win = hs.window.frontmostWindow()
+  -- Check if there is a window present
+  local win = hs.window.focusedWindow()
+  if not win then return end
+
+  -- Select the focused window or if not focused the front window
+  win = hs.window.frontmostWindow()
+
   local id = win:id()
 
   position = getWindowState()
@@ -152,7 +158,6 @@ function moveWindow(direction)
       resizeWindow("full")
     end
   end
-
 end
 
 hs.hotkey.bind(hyper, "Up", function()
