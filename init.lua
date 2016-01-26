@@ -1,6 +1,9 @@
 -- Bound to capslock
 local hyper = {"ctrl", "shift", "alt", "cmd"}
 
+-- Change to Google Chrome if using standard version
+local chromeName = "Google Chrome Canary"
+
 -- Remove window movement animation
 hs.window.animationDuration = 0
 
@@ -183,7 +186,7 @@ end)
 
 hs.hotkey.bind(hyper, "C", function()
   script = [[
-      tell application "Google Chrome"
+      tell application "]] .. chromeName .. [["
           make new window
           activate
       end tell
